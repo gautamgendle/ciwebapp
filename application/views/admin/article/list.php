@@ -51,31 +51,43 @@
                     <div class="card-body">
                         <table class="table border">
                             <tr>
-                                <!-- <th width="50">#</th> -->
-                                <th>Name</th>
-
+                                <th width="50">#</th>
+                                <th width="100">Image</th>
+                                <th>Title</th>
+                                <th width="180">Author</th>
+                                <th width="110">Created</th>
                                 <th width="100">Status</th>
-
-                                <th width="160" class="text-center">Action</th>
+                                <th width="100" class="text-center">Action</th>
                             </tr>
-                            <?php if (!empty($categories)) { ?>
-                                <?php foreach ($categories as $categoryRow) { ?>
+                            <?php if (!empty($articles)) { ?>
+                                <?php foreach ($articles as $article) { ?>
                                     <tr>
 
-                                        <td><?php echo $categoryRow['name'] ?></td>
+                                        <td><?php echo $article['id'] ?></td>
+                                        <td>
+                                            <?php if ($article['image'] != "") { ?>
+                                                <img class="w-100" src="<?php echo base_url('public/uploads/articles/' . $article['image']); ?>"/>
+                                            <?php } else { ?>
+                                                <img class="w-100" width="314" src="<?php echo base_url() . 'public/uploads/no.image.svg.webp'; ?>" />
+                                            <?php } ?>
+                                        </td>
+                                        <td><?php echo $article['title'] ?></td>
+                                        <td><?php echo $article['author'] ?></td>
+                                        <td><?php echo date('Y-m-d', strtotime($article['created_at'])) ?></td>
 
 
-                                        <?php if ($categoryRow['status'] == 1) { ?>
-                                            <td><span class="badge badge-success text-center">Active</span></td>
-                                            <td>
-                                        <?php }  ?>
-                                        <?php if ($categoryRow['status'] == 0) { ?>
-                                            <td><span class="badge badge-danger text-center"> Block</span></td>
-                                        <?php } ?>
-                                        <div class="row">
-                                            <a href="<?php echo base_url() . 'index.php/admin/category/edit/' . $categoryRow['id']; ?>" class="btn btn-primary btn-sm"> <i class="far fa-edit"></i> Edit</a>
-                                            <a href="javascript:void(0);" onclick="deleteCategory(<?php echo $categoryRow['id']; ?>)" class="btn btn-danger btn-sm ml-2"> <i class="far fa-trash-alt"></i> Delete</a>
-                                        </div>
+                                        <td>
+                                            <?php if ($article['status'] == 1) { ?>
+                                                <span class="badge badge-success text-center">Active</span>
+
+                                            <?php } else { ?>
+
+                                                <span class="badge badge-danger text-center"> Block</span>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
+                                            <a href="<?php echo base_url() . 'index.php/admin/category/edit/' . $article['id']; ?>" class="btn btn-primary btn-sm"> <i class="far fa-edit"></i></a>
+                                            <a href="javascript:void(0);" onclick="deleteCategory(<?php echo $article['id']; ?>)" class="btn btn-danger btn-sm ml-2"> <i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -86,6 +98,9 @@
                             <?php } ?>
 
                         </table>
+                        <div>
+                            <?php echo $pagination_links ?>
+                        </div>
                     </div>
 
 
@@ -110,9 +125,9 @@
 
 <script>
     function deleteCategory(id) {
-       if(confirm("Are you sure you want to delete this category ?")){
-        window.location.href='<?php echo base_url().'index.php/admin/category/delete/';?>'+id;
-       }
-    //    alert('<?php echo base_url().'index.php/admin/category/delete/';?>'+id);
+        if (confirm("Are you sure you want to delete this category ?")) {
+            window.location.href = '<?php echo base_url() . 'index.php/admin/category/delete/'; ?>' + id;
+        }
+        //    alert('<?php echo base_url() . 'index.php/admin/category/delete/'; ?>'+id);
     }
 </script>

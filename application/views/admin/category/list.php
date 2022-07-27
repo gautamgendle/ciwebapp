@@ -67,11 +67,12 @@
 
                                         <?php if ($categoryRow['status'] == 1) { ?>
                                             <td><span class="badge badge-success text-center">Active</span></td>
-                                            <td>
+                                            
                                         <?php }  ?>
                                         <?php if ($categoryRow['status'] == 0) { ?>
-                                            <td><span class="badge badge-danger text-center"> Block</span></td>
+                                            <td><span class="badge badge-danger text-center">Block</span></td>
                                         <?php } ?>
+                                        <td>
                                         <div class="row">
                                             <a href="<?php echo base_url() . 'index.php/admin/category/edit/' . $categoryRow['id']; ?>" class="btn btn-primary btn-sm"> <i class="far fa-edit"></i> Edit</a>
                                             <a href="javascript:void(0);" onclick="deleteCategory(<?php echo $categoryRow['id']; ?>)" class="btn btn-danger btn-sm ml-2"> <i class="far fa-trash-alt"></i> Delete</a>

@@ -47,7 +47,7 @@
                                 <?php if($category['image'] != "" ) { ?>
                                     <img src="<?php echo base_url('public/uploads/category/'. $category['image']);?>" />
                                 <?php } else {?>
-                                    <img width="314" src="<?php echo base_url().'public/uploads/no-image.jpg';?>" />  
+                                    <img width="314" src="<?php echo base_url().'public/uploads/no.image.svg.webp';?>" />  
                                     <?php }?>
 
                             </div>
