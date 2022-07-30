@@ -34,7 +34,7 @@
                         <div class="card-title">
                             <form name="searchFrm" id="searchFrm" action="" method="get">
                                 <div class="input-group mb-0">
-                                    <input class="form-control" type="text" value="" placeholder="Search" name="q">
+                                    <input class="form-control" type="text" value="<?php echo $q;?>" placeholder="Search" name="q">
                                     <div class="input-group-append">
                                         <button class="input-group-text" id="basic-addon1" type="">
                                             <i class="fas fa-search"></i>
@@ -86,14 +86,14 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <a href="<?php echo base_url() . 'index.php/admin/category/edit/' . $article['id']; ?>" class="btn btn-primary btn-sm"> <i class="far fa-edit"></i></a>
-                                            <a href="javascript:void(0);" onclick="deleteCategory(<?php echo $article['id']; ?>)" class="btn btn-danger btn-sm ml-2"> <i class="far fa-trash-alt"></i></a>
+                                            <a href="<?php echo base_url() . 'index.php/admin/article/edit/' . $article['id']; ?>" class="btn btn-primary btn-sm"> <i class="far fa-edit"></i></a>
+                                            <a href="javascript:void(0);" onclick="deleteArticle(<?php echo $article['id']; ?>)" class="btn btn-danger btn-sm ml-2"> <i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="4">Record Not Found</td>
+                                    <td colspan="6">Record Not Found</td>
                                 </tr>
                             <?php } ?>
 
@@ -124,9 +124,9 @@
 <?php $this->load->view('admin/footer'); ?>
 
 <script>
-    function deleteCategory(id) {
+    function deleteArticle(id) {
         if (confirm("Are you sure you want to delete this category ?")) {
-            window.location.href = '<?php echo base_url() . 'index.php/admin/category/delete/'; ?>' + id;
+            window.location.href = '<?php echo base_url() . 'index.php/admin/article/delete/'; ?>' + id;
         }
         //    alert('<?php echo base_url() . 'index.php/admin/category/delete/'; ?>'+id);
     }

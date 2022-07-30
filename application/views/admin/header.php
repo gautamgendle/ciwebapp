@@ -29,13 +29,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
 
-
-      <!-- SEARCH FORM -->
-
-
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
+       
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -82,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item has-treeview">
               <a href="#" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
@@ -106,8 +102,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </ul>
             </li>
 
-            <li class="nav-item ">
-              <a href="#" class="nav-link ">
+            <li class="nav-item has-treeview <?php echo (!empty($mainModule) && $mainModule == "article") ? 'menu-open' : ''?>">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Articles
@@ -116,7 +112,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url().'index.php/admin/article/create'?>" class="nav-link ">
+                  <a href="<?php echo base_url().'index.php/admin/article/create'?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == "article" && !empty($subModule) && $subModule == "viewArticle") ? 'active' : ''?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add Articles</p>
                   </a>
