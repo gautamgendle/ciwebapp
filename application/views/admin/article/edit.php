@@ -64,11 +64,11 @@
 
                             <div class="form-group">
                                 <label for="image">Image</label> <br>
-                                <input type="file" name="image" id="image" value="" class=" <?php echo (!empty($errorImageUpload)) ? 'is-invalid' : '' ?>" >
+                                <input type="file" name="image" id="image" value="" class=" pb-3 <?php echo (!empty($errorImageUpload)) ? 'is-invalid' : '' ?>" >
                                 <?php echo (!empty($errorImageUpload)) ? $errorImageUpload : ''; ?>
                                 <br>
                                 <?php if($article['image'] != "" ) { ?>
-                                    <img class="mt-2" src="<?php echo base_url('public/uploads/articles/thumb_admin/'. $article['image']);?>" />
+                                    <img width="314" height="200" src="<?php echo base_url('public/uploads/articles/thumb_admin/'. $article['image']);?>" />
                                 <?php } ?>
                             </div>
 

@@ -1,6 +1,16 @@
 <?php
 class Article extends CI_Controller
 {
+  public function __construct()
+  {
+      parent::__construct();
+      $admin = $this->session->userdata('admin');
+
+      if(empty($admin)) {
+          $this->session->set_flashdata('msg', 'Your session has been expired');
+              redirect(base_url().'index.php/admin/login/index');
+      }
+  }
 
   public function index($page = 1)
   {
@@ -61,7 +71,7 @@ class Article extends CI_Controller
     $data['categories'] = $categories;
 
     $config['upload_path'] = './public/uploads/articles/';
-    $config['allowed_types'] = 'gif|jpg|png';
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
     $config['encrypt_name'] = true;
     $this->load->library('upload', $config);
 
@@ -140,7 +150,7 @@ class Article extends CI_Controller
     $data['article'] = $article;
 
     $config['upload_path'] = './public/uploads/articles/';
-    $config['allowed_types'] = 'gif|jpg|png';
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
     $config['encrypt_name'] = true;
     $this->load->library('upload', $config);
 

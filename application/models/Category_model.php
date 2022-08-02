@@ -34,7 +34,15 @@
             $this->db->update('categories',$formArray);
         }
 
-
+        // Front method
+        public function getCategoriesFront()
+        {
+            $this->db->where('categories.status', 1);
+            $result = $this->db->get('categories')->result_array();
+            //echo $this->db->last_query();
+            return $result;
+        }
+     
 
     }
 ?>

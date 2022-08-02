@@ -6,6 +6,12 @@ class Login extends CI_Controller {
     public function index()
     {
         // echo password_hash('admin', PASSWORD_DEFAULT);
+        $admin = $this->session->userdata('admin');
+
+            if(!empty($admin)) {
+                    redirect(base_url().'index.php/admin/home/index');
+            }
+
         $this->load->library('form_validation');
         $this->load->view('admin/login');
     }

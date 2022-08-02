@@ -41,11 +41,11 @@
 
                             <div class="form-group">
                                 <label for="image">Image</label> <br>
-                                <input type="file" name="image" id="image" value="" class=" <?php echo (!empty($errorImageUpload)) ? 'is-invalid' : '' ?>">
+                                <input type="file" name="image" id="image" value="" class=" pb-3 <?php echo (!empty($errorImageUpload)) ? 'is-invalid' : '' ?>">
                                 <?php echo (!empty($errorImageUpload)) ? $errorImageUpload : ''; ?>
                                 <br>
                                 <?php if($category['image'] != "" ) { ?>
-                                    <img src="<?php echo base_url('public/uploads/category/'. $category['image']);?>" />
+                                    <img width="314" height="200" src="<?php echo base_url('public/uploads/category/'. $category['image']);?>" />
                                 <?php } else {?>
                                     <img width="314" src="<?php echo base_url().'public/uploads/no.image.svg.webp';?>" />  
                                     <?php }?>
